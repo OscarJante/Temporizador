@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Temporizador de 5 Minutos</title>
+    <title>Temporizador de 5 Minsdffsutos</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -11,7 +11,7 @@
             margin-top: 20%;
         }
         #timer {
-            font-size: 48px;
+            font-size: 3rem;
             color: #333;
         }
     </style>
@@ -20,17 +20,16 @@
     <h1>Temporizador de 5 Minutos</h1>
     <div id="timer">05:00</div>
     <script>
-        let timeLeft = 5 * 60; // 5 minutos en segundos
-        const timerElement = document.getElementById('timer');
+        let timeLeft = 300; // 5 minutos en segundos
 
         function updateTimerDisplay() {
             const minutes = Math.floor(timeLeft / 60);
             const seconds = timeLeft % 60;
-            timerElement.textContent = `${minutes.toString().padStart(2,'0')}:${seconds.toString().padStart(2,'0')}`;
+            document.getElementById('timer').textContent = 
+                `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
         }
 
-        function startTimer() {
-            updateTimerDisplay();
+        function startCountdown() {
             const countdown = setInterval(() => {
                 if (timeLeft <= 0) {
                     clearInterval(countdown);
@@ -42,8 +41,8 @@
             }, 1000);
         }
 
-        window.onload = startTimer;
+        updateTimerDisplay();
+        startCountdown();
     </script>
 </body>
 </html>
-
