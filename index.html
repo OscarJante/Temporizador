@@ -1,16 +1,49 @@
-<html>
+<!DOCTYPE html>
+<html lang="es">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Temporizador de 5 Minutos</title>
-    <script>
-        window.onload = function() {
-            setTimeout(function() {
-                alert('¡Tiempo terminado!');
-            }, 5 * 60 * 1000); // 5 minutos en milisegundos
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 20%;
         }
-    </script>
+        #timer {
+            font-size: 48px;
+            color: #333;
+        }
+    </style>
 </head>
 <body>
     <h1>Temporizador de 5 Minutos</h1>
-    <p>El temporizador ha comenzado. ¡Buena suerte!</p>
+    <div id="timer">05:00</div>
+    <script>
+        let timeLeft = 5 * 60; // 5 minutos en segundos
+        const timerElement = document.getElementById('timer');
+
+        function updateTimerDisplay() {
+            const minutes = Math.floor(timeLeft / 60);
+            const seconds = timeLeft % 60;
+            timerElement.textContent = `${minutes.toString().padStart(2,'0')}:${seconds.toString().padStart(2,'0')}`;
+        }
+
+        function startTimer() {
+            updateTimerDisplay();
+            const countdown = setInterval(() => {
+                if (timeLeft <= 0) {
+                    clearInterval(countdown);
+                    alert('¡Tiempo terminado!');
+                } else {
+                    timeLeft--;
+                    updateTimerDisplay();
+                }
+            }, 1000);
+        }
+
+        window.onload = startTimer;
+    </script>
 </body>
 </html>
+
