@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temporizador de 8 Minutos</title>
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(to bottom right, #72CBC7, #4A9B9E);
+            color: white;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        #timer {
+            font-size: 5rem;
+            font-weight: bold;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 20px 40px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            margin-top: 20px;
+            display: inline-block;
+        }
+
+        /* Efecto visual al pasar el ratón sobre el temporizador */
+        #timer:hover {
+            transform: scale(1.1);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        /* Estilos para el botón de WhatsApp */
+        .whatsapp-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #007bff; /* Azul más fuerte */
+            color: white;
+            padding: 15px 25px;
+            border-radius: 50px;
+            font-size: 18px;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            margin-top: 50px;
+            width: auto;
+        }
+
+        .whatsapp-btn img {
+            width: 30px; /* Ajusta el tamaño del logo de WhatsApp */
+            height: 30px;
+            margin-right: 10px; /* Espacio entre el logo y el texto */
+        }
+
+        .whatsapp-btn:hover {
+            background-color: #0056b3; /* Azul más oscuro al pasar el ratón */
+        }
+
+        /* Sonido de alerta */
+        audio {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>Temporizador para la cacería de tesoros</h1>
+        <div id="timer">08:00</div>
+    </div>
+    <audio id="alarmSound" src="https://www.soundjay.com/button/beep-07.mp3"></audio>
+
+    <!-- Botón de WhatsApp -->
+    <a href="https://wa.me/524775643354?text=Voy%20en%20el%20paso%20numero%20uno%0Apero%20necesito%20una%20pista%0Aestoy%20dispuesta%20a%20pagar%0Aconforme%20a%20la%20siguiente%20lista%3A%0AUn%20agarron%20de%20chichis" class="whatsapp-btn" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp"> Necesito ayuda
+    </a>
+
+    <script>
+        let timeLeft = 8 * 60; // 8 minutos en segundos (8 * 60)
+        const alarmSound = document.getElementById('alarmSound');
+
+        function updateTimerDisplay() {
+            const minutes = Math.floor(timeLeft / 60);
+            const seconds = timeLeft % 60;
+            document.getElementById('timer').textContent = 
+                `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        }
+
+        function startCountdown() {
+            const countdown = setInterval(() => {
+                if (timeLeft <= 0) {
+                    clearInterval(countdown);
+                    alarmSound.play();
+                    alert('¡Tiempo terminado!');
+                } else {
+                    timeLeft--;
+                    updateTimerDisplay();
+                }
+            }, 1000);
+        }
+
+        updateTimerDisplay();
+        startCountdown();
+    </script>
+</body>
+</html>
