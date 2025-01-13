@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Temporizador de 30 Segundos</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <style>
         /* Estilos generales */
         body {
@@ -11,6 +12,7 @@
             margin: 0;
             padding: 0;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
@@ -43,6 +45,32 @@
             transition: transform 0.3s ease-in-out;
         }
 
+        /* Estilos para el botón de WhatsApp */
+        .whatsapp-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #007bff; /* Azul más fuerte */
+            color: white;
+            padding: 15px 25px;
+            border-radius: 50px;
+            font-size: 18px;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            margin-top: 50px;
+            width: auto;
+        }
+
+        .whatsapp-btn .whatsapp-icon {
+            font-size: 30px;
+            margin-right: 10px;
+        }
+
+        .whatsapp-btn:hover {
+            background-color: #0056b3; /* Azul más oscuro al pasar el ratón */
+        }
+
         /* Sonido de alerta */
         audio {
             display: none;
@@ -55,6 +83,11 @@
         <div id="timer">00:30</div>
     </div>
     <audio id="alarmSound" src="https://www.soundjay.com/button/beep-07.mp3"></audio>
+
+    <!-- Botón de WhatsApp -->
+    <a href="https://wa.me/524775643354?text=Hola%20necesito%20ayuda" class="whatsapp-btn" target="_blank">
+        <span class="material-icons whatsapp-icon">whatsapp</span> Necesito ayuda
+    </a>
 
     <script>
         let timeLeft = 30; // 30 segundos
